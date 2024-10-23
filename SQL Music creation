@@ -1,0 +1,142 @@
+CREATE TABLE public.album2
+(
+    album_id int8 PRIMARY KEY,
+    title character varying,
+    artist_id int8
+);
+
+copy album2 (album_id, title, artist_id)
+from 'C:\SQL Queries\music store data\album2.csv'
+delimiter ','
+csv header ;
+
+
+
+drop table public.employee
+
+create table public.employee
+(employee_id int primary key, 
+last_name varchar (50),
+first_name	varchar (50),
+title	varchar (30), 
+reports_to	varchar (50),
+levels	varchar (50),
+birthdate	date ,
+hire_date	date ,
+address	varchar (50),
+city varchar (50),
+state varchar (50),
+country	varchar (50),
+postal_code	varchar (50),
+phone varchar (50),
+fax	varchar (50),
+email varchar (50))
+
+
+copy employee (employee_id,	last_name, first_name,	title,	reports_to,	levels,
+birthdate,	hire_date,	address,	city,	state,	country, postal_code,	phone,	fax, email)
+from 'C:\SQL Queries\music store data\employee.csv'
+delimiter ','
+csv header ;
+
+select * from employee
+
+
+
+
+create table public.invoice (
+invoice_id	int ,
+customer_id	int ,
+invoice_date date ,
+billing_address	varchar (50),
+billing_city varchar (50),
+billing_state varchar (50),
+billing_country	varchar (50),
+billing_postal_code	varchar (50),
+total decimal (5,2)
+)
+
+copy invoice (invoice_id,	customer_id,	invoice_date,	billing_address,	
+billing_city,	billing_state,	billing_country,	billing_postal_code,	total)
+from 'C:\SQL Queries\music store data\invoice.csv'
+delimiter ','
+csv header ;
+
+
+
+drop table public.customer
+
+CREATE TABLE public.customer
+(customer_id int8 primary key ,
+first_name	varchar (50),
+last_name	varchar (50),
+company	varchar (50),
+address	varchar (100),
+city	varchar (50),
+state	varchar (50),
+country	varchar (50),
+postal_code	varchar (50),
+phone	varchar (50),
+fax	varchar (50),
+email	varchar (50),
+support_rep_id int
+
+)
+
+copy customer (customer_id,first_name,last_name,company,address,city,state,
+country,	postal_code,	phone,	fax,	email,	support_rep_id)
+from 'C:\SQL Queries\music store data\customer.csv'
+delimiter ','
+csv header ;
+
+CREATE TABLE public.invoice_line
+(
+    invoice_line_id	int,
+	invoice_id	int,
+	track_id	int,
+	unit_price	decimal (4,2),
+	quantity int
+
+);
+
+copy invoice_line (invoice_line_id,invoice_id,	track_id,	unit_price,	quantity)
+from 'C:\SQL Queries\music store data\invoice_line.csv'
+delimiter ','
+csv header ;
+
+
+
+drop table track
+CREATE TABLE public.track
+(track_id int,
+name varchar(500),	
+album_id int ,
+media_type_id int ,	genre_id int,
+composer varchar(500),	
+milliseconds int,	bytes int,	unit_price decimal (4,2));
+
+copy track (track_id,name,	album_id,media_type_id,	genre_id, composer,	
+milliseconds,	bytes,	unit_price)
+from 'C:\SQL Queries\music store data\track.csv'
+delimiter ','
+csv header ;
+
+
+
+
+
+CREATE TABLE public.artist
+(
+    artist_id	int,
+	name varchar (250)
+
+);
+
+copy artist (artist_id, name)
+from 'C:\SQL Queries\music store data\artist.csv'
+delimiter ','
+csv header ;
+
+
+
+
